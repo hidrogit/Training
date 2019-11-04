@@ -1,0 +1,2 @@
+recursive-include ipyleaflet/static *.*
+include jupyter-leaflet.json
