@@ -113,12 +113,10 @@ def manipulate(data, product):
         manipulated_data = np.zeros((data.shape[0], data.shape[1]))
         for i in range(0, data.shape[0]):
             for j in range(0, data.shape[1]):
-                if data[i][j] > 200:
-                    manipulated_data[i][j] = 255
-                elif data[i][j] < 0:
+                if data[i][j] < 0:
                     manipulated_data[i][j] = 0
                 else:
-                    manipulated_data[i][j] = round(1.0 * data[i][j] * 127.0 / 200.0) + 128
+                    manipulated_data[i][j] = data[i][j]
             manipulated_data = manipulated_data.astype(int)
         data = manipulated_data
     else:
