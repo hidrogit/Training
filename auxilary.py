@@ -110,7 +110,7 @@ def read_config():
 
 def manipulate(data, product):
     if product == 'H13':
-        manipulated_data = np.zeros((data.shape[0], data.shape[1]))
+        data = np.zeros((data.shape[0], data.shape[1]))
 #         for i in range(0, data.shape[0]):
 #             for j in range(0, data.shape[1]):
 #                 if data[i][j] < 0:
@@ -118,12 +118,12 @@ def manipulate(data, product):
 #                 else:
 #                     manipulated_data[i][j] = data[i][j]
 #             manipulated_data = manipulated_data.astype(int)
-        manipulated_data = np.where(data == 0, 2, data)
-        manipulated_data = np.where(data == -1, 1, data)
-        manipulated_data = np.where(data == -2, 0, data)
-        manipulated_data = np.where(data >= 0, data/300, data/300)
-        
-        data = manipulated_data
+        data = np.where(data == 0, 2, data)   # land - blue
+        data = np.where(data == -1, 1, data)  # Sea - black
+        data = np.where(data == -2, 0, data)  # noData - grey
+        min = 0
+        max = 255
+        data = np.where((data == 1) | (data == 2), data, ((data - min)/(max - min))*255)
     else:
         data = data
     return data
@@ -180,6 +180,7 @@ def pal(product):
 #                        (127, 0, 0), (127, 0, 0)]
         viridis = cm.get_cmap('jet', 256)
         newcolors = viridis(np.linspace(0, 1, 256))
+        newcolors[2] = ([0. , 0.7 , 0.4, 1 ])
         newcolors[1] = ([0. , 0. , 0., 1 ])
         newcolors[0] = (192/255 , 192/255, 192/255, 1)
         newcmp = ListedColormap(newcolors)
