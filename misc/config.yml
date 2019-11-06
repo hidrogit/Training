@@ -1,7 +1,7 @@
 date_interval:
-  end_date: '20191105'
-  start_date: '20191101'
-ext: H5
-product: h10
+  end_date: '20191101'
+  start_date: '20191001'
+ext: grib2
+product: h13
 run_flag: Downloaded Data
-selected_date: '20191105'
+selected_date: '20191101'
