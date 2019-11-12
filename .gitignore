@@ -8,3 +8,7 @@ h10_data/
 h13_data/
 h10_test_data/
 h13_test_data/
+h10/
+bokeh-notebooks/
+ipyleaflet/
+jupyter-datatables/
