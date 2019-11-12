@@ -187,13 +187,11 @@ class Decoder(object):
     def get_data(self, file_, input_extension="hdf"):
         ret_data = []
         if self.product in ['H10', 'H34']:
-            # data_name = 'mountainmask' # H10
             data_name = 'SC' # H34
         elif self.product in ['H12', 'H35']:
-            data_name = 'MMASK_METOP'
+            data_name = 'FSC'
         elif self.product in ['H13']:
-            data_name = 'swe'
-            data_name = 'mask'
+            data_name = 'SWE'
         else:
             err_txt = "No data name has been provided"
             # self.log_.error(err_txt)
